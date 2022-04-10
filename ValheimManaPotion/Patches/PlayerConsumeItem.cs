@@ -5,20 +5,23 @@ using skyheim;
 
 namespace ValheimManaPotion.Patches
 {
-    [HarmonyPatch(typeof(Player), "EatFood")]
+    [HarmonyPatch(typeof(Player), "ConsumeItem")]
     public static class PlayerConsumeItem
     {
         [HarmonyPrefix]
-        private static void Postfix(ref ItemDrop.ItemData item)
+        private static void Postfix(ref Inventory inventory, ref ItemDrop.ItemData item)
         {
-            ValheimManaPotion.logger.LogInfo("================ ITEM LOG ================");
-            if (item.m_shared.m_name.IndexOf("potion") > -1)
+            if (item.m_shared.m_name.IndexOf("manapotion") > -1)
             {
-                var teste = new SkyheimItemData();
-                teste.ManaUsed = item.m_shared.m_foodStamina;
-                SkyheimMana.Instance.ConsumeMana(teste);
+                var skyheimItem = new SkyheimItemData();
+                skyheimItem.ManaUsed = item.m_shared.m_aiAttackInterval;
+                SkyheimMana.Instance.ConsumeMana(skyheimItem);
             }
-            ValheimManaPotion.logger.LogInfo("================ ITEM LOG ================");
+
+            if (item.m_shared.m_name.IndexOf("staminapotion") > -1)
+            {
+                ValheimManaPotion.staminaRegenComplement = item.m_shared.m_aiAttackInterval;
+            }
         }
     }
 }

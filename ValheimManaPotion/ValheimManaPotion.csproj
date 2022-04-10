@@ -137,7 +137,7 @@
     </Reference>
     <Reference Include="skyheim, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\skyheim.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\skyheim.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -148,8 +148,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\LocalizationBuilder.cs" />
+    <Compile Include="Builders\ManaPotionBuilder.cs" />
+    <Compile Include="Builders\RecipeBuilder.cs" />
+    <Compile Include="Builders\StaminaPotionBuilder.cs" />
+    <Compile Include="Items\GenerateItem.cs" />
+    <Compile Include="Items\ManaPotion.cs" />
+    <Compile Include="Items\Potion.cs" />
+    <Compile Include="Items\Potions.cs" />
     <Compile Include="Patches\PlayerConsumeItem.cs" />
     <Compile Include="Properties\IgnoreAccessModifiers.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="ValheimManaPotion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -165,6 +174,7 @@
     <None Include="Package\manifest.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\potion.png" />
     <Content Include="Package\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
